@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Curso</title>
+    <title>Curso Interactivo</title>
     <style>
-        html, body { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; }
+        html, body { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background-color: #ffffff; }
         iframe { width: 100%; height: 100%; border: none; }
     </style>
     <script>
-        // Simulamos un entorno LMS básico para engañar al SCORM
-        window.API = {
+        // Clonamos una API falsa ultra-compatible en todos los niveles posibles de la ventana
+        var fakeLMS = {
             LMSInitialize: function() { return "true"; },
             LMSGetValue: function() { return ""; },
             LMSSetValue: function() { return "true"; },
@@ -18,9 +18,7 @@
             LMSFinish: function() { return "true"; },
             LMSGetLastError: function() { return 0; },
             LMSGetErrorString: function() { return "No error"; },
-            LMSGetDiagnostic: function() { return "No error"; }
-        };
-        window.API_1484_11 = {
+            LMSGetDiagnostic: function() { return "No error"; },
             Initialize: function() { return "true"; },
             GetValue: function() { return ""; },
             SetValue: function() { return "true"; },
@@ -30,9 +28,17 @@
             GetErrorString: function() { return "No error"; },
             GetDiagnostic: function() { return "No error"; }
         };
+
+        // Inyección masiva en la ventana actual, la ventana superior y la ventana padre
+        window.API = fakeLMS;
+        window.API_1484_11 = fakeLMS;
+        window.parent.API = fakeLMS;
+        window.parent.API_1484_11 = fakeLMS;
+        window.top.API = fakeLMS;
+        window.top.API_1484_11 = fakeLMS;
     </script>
 </head>
 <body>
-    <iframe src="scormdriver/indexAPI.html"></iframe>
+    <iframe src="scormcontent/index.html"></iframe>
 </body>
 </html>
