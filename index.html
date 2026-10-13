@@ -1,6 +1,24 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <script>
+    var fakeLMS = {
+        LMSInitialize: function() { return "true"; },
+        LMSGetValue: function() { return ""; },
+        LMSSetValue: function() { return "true"; },
+        LMSCommit: function() { return "true"; },
+        LMSFinish: function() { return "true"; },
+        LMSGetLastError: function() { return 0; },
+        Initialize: function() { return "true"; },
+        GetValue: function() { return ""; },
+        SetValue: function() { return "true"; },
+        Commit: function() { return "true"; },
+        Terminate: function() { return "true"; },
+        GetLastError: function() { return 0; }
+    };
+    window.API = fakeLMS;
+    window.API_1484_11 = fakeLMS;
+</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Curso Interactivo</title>
